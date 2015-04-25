@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.transition.Explode;
+import android.transition.Slide;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -15,6 +17,7 @@ public class NewTractScreen extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_tract_screen);
         getSupportActionBar().hide();
+        getWindow().setEnterTransition(new Explode());
 
     }
 
