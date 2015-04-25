@@ -16,6 +16,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".NewTractScreen"
+            android:label="@string/title_activity_new_tract_screen"
+            android:parentActivityName=".MenuScreen">
+        </activity>
     </application>
 
 </manifest>

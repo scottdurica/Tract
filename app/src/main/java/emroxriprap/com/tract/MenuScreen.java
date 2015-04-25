@@ -1,18 +1,23 @@
 package emroxriprap.com.tract;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.util.Log;
+import android.util.Pair;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 
-public class MenuScreen extends Activity implements View.OnClickListener{
+public class MenuScreen extends ActionBarActivity implements View.OnClickListener{
 
     CardView newTract;
+    TextView newText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +28,7 @@ public class MenuScreen extends Activity implements View.OnClickListener{
     private void initViews() {
         newTract = (CardView)findViewById(R.id.cv_new_tract);
         newTract.setOnClickListener(this);
+        newText = (TextView)findViewById(R.id.tv_newTract);
     }
 
 
@@ -53,7 +59,10 @@ public class MenuScreen extends Activity implements View.OnClickListener{
 
         switch (v.getId()){
             case R.id.cv_new_tract:
-                Log.d("Touched"," touched");
+//                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MenuScreen.this,new Pair(newTract,"cardBG"),new Pair(newText,"cardText"));
+                ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MenuScreen.this,newTract,"cardBG");
+                Intent intent = new Intent(MenuScreen.this,NewTractScreen.class);
+                startActivity(intent, options.toBundle());
         }
     }
 }
