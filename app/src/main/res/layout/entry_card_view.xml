@@ -16,7 +16,7 @@
         android:layout_marginBottom="10dp"
 
         android:foreground="?android:attr/selectableItemBackground"
-        card_view:cardBackgroundColor="@color/accent"
+        card_view:cardBackgroundColor="@color/cardBackground"
         card_view:cardCornerRadius="5dp"
         card_view:cardElevation="4dp"
         android:id="@+id/cv_entry">
