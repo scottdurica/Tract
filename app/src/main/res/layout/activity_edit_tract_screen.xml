@@ -1,0 +1,244 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="emroxriprap.com.tract.EditTractScreen"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Address"
+            android:id="@+id/textView2"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignBottom="@+id/et_address"
+            android:gravity="center_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_address"
+            android:transitionName="tf_address"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="0dp"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_marginLeft="30dp"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Time"
+            android:id="@+id/textView3"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/et_hours"
+            android:gravity="center_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:id="@+id/et_hours"
+            android:layout_below="@+id/et_address"
+            android:layout_alignStart="@+id/et_address"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="\@"
+            android:id="@+id/textView4"
+            android:layout_below="@+id/et_address"
+            android:layout_toEndOf="@+id/et_hours"
+            android:layout_alignBottom="@+id/et_hours"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:id="@+id/et_rate"
+            android:layout_below="@+id/et_address"
+            android:layout_toEndOf="@+id/textView4"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Materials"
+            android:id="@+id/textView5"
+            android:layout_below="@+id/textView3"
+            android:layout_alignParentStart="true"
+            android:layout_alignBottom="@+id/et_materials"
+            android:gravity="fill_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:id="@+id/et_materials"
+            android:layout_below="@+id/et_hours"
+            android:layout_alignStart="@+id/et_hours"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="\@"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/et_hours"
+            android:layout_alignBottom="@+id/et_materials"
+            android:layout_toStartOf="@+id/et_rate"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:ems="5"
+            android:id="@+id/et_markup"
+            android:layout_below="@+id/textView4"
+            android:layout_toEndOf="@+id/textView4"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Description"
+            android:id="@+id/textView7"
+            android:layout_alignParentStart="true"
+            android:layout_alignTop="@+id/et_description"
+            android:layout_alignBottom="@+id/et_description"
+            android:gravity="fill_vertical" />
+
+        <EditText
+            android:transitionName="tf_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_description"
+            android:layout_below="@+id/et_materials"
+            android:layout_alignStart="@+id/et_materials"
+            android:layout_alignParentEnd="true"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/textColorSecondary"
+
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Total"
+            android:id="@+id/textView8"
+            android:layout_below="@+id/textView7"
+            android:layout_alignParentStart="true"
+            android:paddingTop="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="$100.00"
+            android:id="@+id/tv_total"
+            android:layout_below="@+id/textView7"
+            android:layout_toEndOf="@+id/textView8"
+            android:paddingTop="5dp"
+            android:paddingLeft="10dp" />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cb_is_entered"
+            android:checked="false"
+            android:layout_below="@+id/et_description"
+            android:layout_toEndOf="@+id/textView9"
+            android:layout_alignBottom="@+id/tv_total"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Billed"
+            android:id="@+id/textView9"
+            android:paddingTop="5dp"
+            android:paddingRight="5dp"
+            android:layout_alignTop="@+id/cb_is_entered"
+            android:layout_alignEnd="@+id/et_markup" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:id="@+id/b_update"
+            android:layout_below="@+id/textView8"
+            android:layout_alignParentStart="true"
+            android:visibility="visible"
+            android:layout_marginTop="8dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+
+            android:id="@+id/b_delete"
+            android:layout_below="@+id/tv_total"
+            android:layout_toEndOf="@+id/b_update"
+            android:visibility="visible"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="5dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/b_add_to_db"
+            android:layout_below="@+id/cb_is_entered"
+            android:layout_alignParentEnd="true"
+            android:visibility="invisible"
+            android:layout_marginTop="8dp" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -10,33 +10,41 @@ import java.util.List;
  */
 public class Entry {
     private String address,description,date;
-    private int rate,materials,markup,hours,id;
+    private int rate,materials,markup,hours;
+    private int id, billed;
 
     public Entry(){
 
     };
 
-    public Entry(String date, String address, int rate, int materials, int markup, int hours, String description){
+    public Entry(String date, String address, double rate, double materials, double markup, double hours, String description,int billed){
         this.date = date;
         this.address = address;
-        this.rate = rate;
-        this.materials = materials;
-        this.markup = markup;
-        this.hours = hours;
+        this.rate = convertToCents(rate);
+        this.materials = convertToCents(materials);
+        this.markup = convertToCents(markup);
+        this.hours = convertToCents(hours);
         this.description = description;
-        this.id = 0;
+        this.billed = billed;
 
-    }    public Entry(String date, String address, int rate, int materials, int markup, int hours, String description, int id){
+
+    }
+    public Entry(String date, String address, double rate, double materials, double markup, double hours, String description,int billed, int id){
         this.date = date;
         this.address = address;
-        this.rate = rate;
-        this.materials = materials;
-        this.markup = markup;
-        this.hours = hours;
+        this.rate = convertToCents(rate);
+        this.materials = convertToCents(materials);
+        this.markup = convertToCents(markup);
+        this.hours = convertToCents(hours);
         this.description = description;
+        this.billed = billed;
+        this.id = id;
 
     }
 
+    public int convertToCents(double amount){
+        return (int)(amount * 100);
+    }
     public static List<Entry> initTestData(){
         List<Entry> list = new ArrayList<Entry>();
 
@@ -110,5 +118,13 @@ public class Entry {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getBilled() {
+        return billed;
+    }
+
+    public void setBilled(int billed) {
+        this.billed = billed;
     }
 }

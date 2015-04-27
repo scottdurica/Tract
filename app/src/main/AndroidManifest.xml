@@ -19,7 +19,15 @@
         <activity
             android:name=".NewTractScreen"
             android:label="@string/title_activity_new_tract_screen"
-            android:parentActivityName=".MenuScreen">
+            android:parentActivityName=".MenuScreen" >
+        </activity>
+        <activity
+            android:name=".EditTractScreen"
+            android:label="@string/title_activity_edit_tract_screen" >
+        </activity>
+        <activity
+            android:name=".DateChooserScreen"
+            android:label="@string/title_activity_date_chooser_screen" >
         </activity>
     </application>
 
