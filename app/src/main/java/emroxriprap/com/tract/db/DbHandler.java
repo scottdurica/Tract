@@ -84,6 +84,20 @@ public class DbHandler extends SQLiteOpenHelper{
         }
         return false;
     }
+    public boolean updateEntry(Entry entry){
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_DATE,entry.getDate());
+        values.put(COLUMN_ADDRESS,entry.getAddress());
+        values.put(COLUMN_HOURS,entry.getHours());
+        values.put(COLUMN_RATE,entry.getRate());
+        values.put(COLUMN_MATERIALS, entry.getMaterials());
+        values.put(COLUMN_MARKUP, entry.getMarkup());
+        values.put(COLUMN_DESCRIPTION, entry.getDescription());
+        values.put(COLUMN_BILLED, entry.getBilled());
+        SQLiteDatabase db = this.getWritableDatabase();
+        long successful = db.update(TABLE_ENTRIES,values,COLUMN_ID + "=" + entry.getId(),null);
+        return successful != -1 ? true : false;
+    }
     public List<Entry> getAllEntries(){
         List<Entry> list = new ArrayList<Entry>();
         String query = "Select * from " + TABLE_ENTRIES + "";
@@ -108,4 +122,5 @@ public class DbHandler extends SQLiteOpenHelper{
         }
         return list;
     }
+
 }

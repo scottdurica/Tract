@@ -2,6 +2,7 @@ package emroxriprap.com.tract;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -92,12 +93,13 @@ public class MenuScreen extends ActionBarActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.EntryViewHolder> implements View.OnClickListener{
+    public class MyCustomAdapter extends RecyclerView.Adapter<MyCustomAdapter.EntryViewHolder> implements View.OnClickListener, View.OnLongClickListener{
         List<Entry> entries;
 
         MyCustomAdapter(List<Entry> entries){
             this.entries = entries;
         }
+
 
         public class EntryViewHolder extends RecyclerView.ViewHolder {
 
@@ -126,6 +128,7 @@ public class MenuScreen extends ActionBarActivity{
         public EntryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.entry_card_view,parent,false);
 view.setOnClickListener(this);
+            view.setOnLongClickListener(this);
             EntryViewHolder entryViewHolder = new EntryViewHolder(view);
             return entryViewHolder;
         }
@@ -141,6 +144,12 @@ view.setOnClickListener(this);
         }
 
         @Override
+        public boolean onLongClick(View v) {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//            builder.setTitle("")
+            return true;
+        }
+        @Override
         public void onClick(View v) {
             TextView tv = (TextView)v.findViewById(R.id.tv_cv_address);
             tv.setTransitionName("tf_address");
@@ -148,11 +157,16 @@ view.setOnClickListener(this);
             desc.setTransitionName("tf_description");
             int itemPosition = recyclerView.getChildPosition(v);
             Entry entry = entries.get(itemPosition);
-            String item = entry.getAddress();
             Intent intent = new Intent(MenuScreen.this,EditTractScreen.class);
-            intent.putExtra("address",item);
+            intent.putExtra("address",entry.getAddress());
             intent.putExtra("date",entry.getDate());
             intent.putExtra("description",entry.getDescription());
+            intent.putExtra("id",entry.getId());
+            intent.putExtra("rate",entry.getRate());
+            intent.putExtra("materials",entry.getMaterials());
+            intent.putExtra("markup",entry.getMarkup());
+            intent.putExtra("hours",entry.getHours());
+            intent.putExtra("billed",entry.getBilled());
 
 //            Toast.makeText(getApplicationContext(),intent.getStringExtra("address"),Toast.LENGTH_LONG).show();
 //            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MenuScreen.this,tv,"tf_addressss");

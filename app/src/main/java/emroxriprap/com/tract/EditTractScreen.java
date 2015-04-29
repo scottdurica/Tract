@@ -20,7 +20,8 @@ import emroxriprap.com.tract.db.DbHandler;
 
 public class EditTractScreen extends ActionBarActivity implements View.OnClickListener {
 
-    EditText address,description,rate,time,materials,markup;
+    EditText address,description,rate,materials,markup,hours;
+    int id;
     CheckBox billed;
     TextView total;
     String callingClass;
@@ -46,11 +47,12 @@ public class EditTractScreen extends ActionBarActivity implements View.OnClickLi
         address = (EditText)findViewById(R.id.et_address);
         description = (EditText)findViewById(R.id.et_description);
         rate = (EditText)findViewById(R.id.et_rate);
-        time = (EditText)findViewById(R.id.et_hours);
+        hours = (EditText)findViewById(R.id.et_hours);
         materials = (EditText)findViewById(R.id.et_materials);
         markup = (EditText)findViewById(R.id.et_markup);
         billed = (CheckBox)findViewById(R.id.cb_is_entered);
         total = (TextView)findViewById(R.id.tv_total);
+
 
         delete = (Button)findViewById(R.id.b_delete);
         update = (Button)findViewById(R.id.b_update);
@@ -60,8 +62,20 @@ public class EditTractScreen extends ActionBarActivity implements View.OnClickLi
         addToDb.setOnClickListener(this);
         showOrHideButtons(isNewEntry);
         if (isNewEntry == false) {
+
+            id =Integer.valueOf(this.getIntent().getIntExtra("id",-1));
             address.setText(this.getIntent().getStringExtra("address"));
+            hours.setText(Double.toString(this.getIntent().getIntExtra("hours", -1)/100));
+            rate.setText(Double.toString(this.getIntent().getIntExtra("rate", -1)/100));
+            materials.setText(Double.toString(this.getIntent().getIntExtra("materials", -1)/100));
+            markup.setText(Double.toString(this.getIntent().getIntExtra("markup", -1)/100));
             description.setText(this.getIntent().getStringExtra("description"));
+            int billedVal = this.getIntent().getIntExtra("billed",0);
+            if (billedVal == 1){
+                billed.setChecked(true);
+            }
+
+
         }
 
     }
@@ -111,7 +125,7 @@ public class EditTractScreen extends ActionBarActivity implements View.OnClickLi
                     if (billed.isChecked())billedVal = 1;
                     Entry entry = new Entry(date, address.getText().toString(), Double.valueOf(rate.getText().toString()),
                     Double.valueOf(materials.getText().toString()),Double.valueOf(markup.getText().toString()),
-                    Double.valueOf(time.getText().toString()), description.getText().toString(),
+                    Double.valueOf(hours.getText().toString()), description.getText().toString(),
                     billedVal);
                     if (db.addEntry(entry)){
                         Toast.makeText(this,"Data Saved",Toast.LENGTH_LONG).show();
@@ -128,6 +142,24 @@ public class EditTractScreen extends ActionBarActivity implements View.OnClickLi
                 break;
 
             case R.id.b_update:
+                if (validateFields()){
+                    DbHandler db = new DbHandler(this);
+                    int billedVal =0;
+                    if (billed.isChecked())billedVal = 1;
+                    Entry entry = new Entry(date, address.getText().toString(), Double.valueOf(rate.getText().toString()),
+                            Double.valueOf(materials.getText().toString()),Double.valueOf(markup.getText().toString()),
+                            Double.valueOf(hours.getText().toString()), description.getText().toString(),
+                            billedVal,id);
+
+                    if (db.updateEntry(entry)){
+                        Toast.makeText(this,"Data updated",Toast.LENGTH_LONG).show();
+
+                    }else
+                        Toast.makeText(this,"Error! Data not updated.",Toast.LENGTH_LONG).show();
+                }else
+                    Toast.makeText(this,"Fill out all fields",Toast.LENGTH_SHORT).show();
+                intent = new Intent(EditTractScreen.this,MenuScreen.class);
+                startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(EditTractScreen.this).toBundle());
                 break;
         }
     }
@@ -136,7 +168,7 @@ public class EditTractScreen extends ActionBarActivity implements View.OnClickLi
 
         if (address.getText() == null || address.getText().toString().equalsIgnoreCase("")||
                 address.getText().toString().trim().length()== 0 ||
-                time.getText() == null || time.getText().toString().equalsIgnoreCase("")||
+                hours.getText() == null || hours.getText().toString().equalsIgnoreCase("")||
                 rate.getText() == null || rate.getText().toString().equalsIgnoreCase("")||
                 materials.getText() == null || materials.getText().toString().equalsIgnoreCase("")||
                 markup.getText() == null || markup.getText().toString().equalsIgnoreCase("")||
