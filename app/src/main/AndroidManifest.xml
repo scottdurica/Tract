@@ -29,6 +29,18 @@
             android:name=".DateChooserScreen"
             android:label="@string/title_activity_date_chooser_screen" >
         </activity>
+        <activity
+            android:name=".PropertyListScreen"
+            android:label="@string/title_activity_property_list_screen"
+            android:parentActivityName=".MenuScreen" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="emroxriprap.com.tract.MenuScreen" />
+        </activity>
+        <activity
+            android:name=".EditPropertyScreen"
+            android:label="@string/title_activity_edit_property_screen" >
+        </activity>
     </application>
 
 </manifest>

@@ -18,7 +18,6 @@
         card_view:cardBackgroundColor="@color/cardBackground"
 
         android:stateListAnimator="@drawable/lift_up_animation"
-        android:transitionName="cardBG"
         android:layout_marginTop="0dp"
         android:layout_marginLeft="0dp"
         android:layout_marginRight="0dp"
@@ -29,7 +28,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="New Tract"
-            android:transitionName="cardText"
             android:textColor="@color/textColorPrimary"
             android:gravity="center_vertical"
             android:layout_below="@+id/cv_new_tract_transitioned"

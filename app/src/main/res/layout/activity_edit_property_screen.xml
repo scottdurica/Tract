@@ -1,0 +1,96 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context="emroxriprap.com.tract.EditPropertyScreen"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:weightSum="1"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Address"
+            android:id="@+id/textView2"
+            android:layout_marginLeft="0dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="false"
+            android:layout_alignBottom="@+id/et_property_address"
+            android:gravity="center_vertical" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Update"
+            android:id="@+id/b_property_update"
+            android:visibility="visible"
+            android:background="@color/primaryColorAccent"
+            android:layout_below="@+id/et_property_city"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Delete"
+
+            android:id="@+id/b_property_delete"
+            android:visibility="visible"
+            android:layout_marginLeft="5dp"
+            android:background="@color/primaryColorAccent"
+            android:layout_below="@+id/et_property_city"
+            android:layout_toEndOf="@+id/b_property_update" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add"
+            android:id="@+id/b_property_add_to_db"
+            android:background="@color/primaryColorAccent"
+            android:layout_below="@+id/et_property_city"
+            android:layout_alignParentEnd="true" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_property_address"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:textColor="@color/textColorSecondary"
+            android:paddingLeft="5dp"
+            android:layout_marginLeft="20dp"
+            android:hint="Address, Unit Number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="City, State"
+            android:id="@+id/textView10"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true"
+            android:layout_above="@+id/b_property_update"
+            android:gravity="center_vertical" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_property_city"
+            android:layout_below="@+id/et_property_address"
+            android:layout_alignParentEnd="true"
+            android:paddingLeft="5dp"
+            android:textColor="@color/textColorSecondary"
+            android:layout_alignStart="@+id/et_property_address"
+            android:hint="City, State, Zip" />
+
+    </RelativeLayout>
+</LinearLayout>

@@ -5,6 +5,7 @@ import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
@@ -24,6 +25,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 
 import java.util.List;
 
@@ -74,7 +76,7 @@ public class MenuScreen extends ActionBarActivity{
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_menu_screen, menu);
+        getMenuInflater().inflate(R.menu.menu_edit_tract_screen, menu);
         return true;
     }
 
@@ -86,7 +88,10 @@ public class MenuScreen extends ActionBarActivity{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.settings_property_list) {
+            Intent intent = new Intent(MenuScreen.this,PropertyListScreen.class);
+            startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(MenuScreen.this).toBundle());
+
             return true;
         }
 
@@ -127,7 +132,7 @@ public class MenuScreen extends ActionBarActivity{
         @Override
         public EntryViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.entry_card_view,parent,false);
-view.setOnClickListener(this);
+            view.setOnClickListener(this);
             view.setOnLongClickListener(this);
             EntryViewHolder entryViewHolder = new EntryViewHolder(view);
             return entryViewHolder;
@@ -165,8 +170,10 @@ view.setOnClickListener(this);
             intent.putExtra("rate",entry.getRate());
             intent.putExtra("materials",entry.getMaterials());
             intent.putExtra("markup",entry.getMarkup());
+            Log.d("Markup value is: ", "" + entry.getMarkup());
             intent.putExtra("hours",entry.getHours());
             intent.putExtra("billed",entry.getBilled());
+            intent.putExtra("total",entry.getTotal());
 
 //            Toast.makeText(getApplicationContext(),intent.getStringExtra("address"),Toast.LENGTH_LONG).show();
 //            ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(MenuScreen.this,tv,"tf_addressss");

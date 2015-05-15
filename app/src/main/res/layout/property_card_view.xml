@@ -19,7 +19,7 @@
 
         card_view:cardCornerRadius="0dp"
         card_view:cardElevation="2dp"
-        android:id="@+id/cv_entry">
+        android:id="@+id/cv_property">
 
 
         <RelativeLayout
@@ -30,37 +30,24 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textAppearance="?android:attr/textAppearanceMedium"
 
                 android:text="123 Main Street"
-                android:id="@+id/tv_cv_address"
+                android:id="@+id/tv_cv_property_address_one"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentStart="true"
                 android:textColor="@color/textColorSecondary"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="1/22/1975"
-                android:id="@+id/tv_cv_date"
-                android:layout_alignParentTop="true"
-                android:layout_alignParentEnd="true"
-                android:textColor="@color/textColorSecondary"
-                />
+                android:paddingBottom="5dp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceSmall"
                 android:text="Description of stuff here."
-                android:id="@+id/tv_cv_description"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentStart="true"
-                android:layout_alignEnd="@+id/tv_cv_date"
+                android:id="@+id/tv_cv_property_city"
                 android:textColor="@color/textColorSecondary"
-                />
+                android:layout_below="@+id/tv_cv_property_address_one"
+                android:layout_alignParentStart="true" />
         </RelativeLayout>
 
     </android.support.v7.widget.CardView>

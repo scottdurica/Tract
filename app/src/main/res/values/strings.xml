@@ -7,5 +7,7 @@
     <string name="title_activity_new_tract_screen">NewTractScreen</string>
     <string name="title_activity_edit_tract_screen">EditTractScreen</string>
     <string name="title_activity_date_chooser_screen">DateChooserScreen</string>
+    <string name="title_activity_property_list_screen">PropertyListScreen</string>
+    <string name="title_activity_edit_property_screen">EditPropertyScreen</string>
 
 </resources>
